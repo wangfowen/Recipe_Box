@@ -24,11 +24,13 @@ namespace Recipe_Box
         public MainPage()
         {
             this.InitializeComponent();
-
+            
             //cardViewer viewer = new cardViewer();
             //this.mainGrid.Children.Add(viewer);
+
             //EditCard Card = new EditCard();
             //this.mainGrid.Children.Add(Card);
+
 
 
             /*************SETUP LOCAL STORAGE**********************/
@@ -49,16 +51,14 @@ namespace Recipe_Box
 
                 foreach (CardObj Card in AllData.AllCardData)
                 {
-
                     MyUserControl1 control = new MyUserControl1(500, 300, Card);
                     control.Width = 600;
                     control.Height = 400;
                     control.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
                     control.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
                     MainPage.AllCards.Add(control);
-
                 }
-               
+                this.cardCarousel.setup();
             }
             FocusCount++;
         }

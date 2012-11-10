@@ -25,7 +25,7 @@
     </Page.BottomAppBar> 
 
     <Grid x:Name="mainGrid" Background="#FFD5C680">
-    	<local:cardViewer HorizontalAlignment="Center" VerticalAlignment="Center" Height="700" Width="800"/>
+    	<local:cardViewer x:Name="cardCarousel" HorizontalAlignment="Center" VerticalAlignment="Center" Height="700" Width="800"/>
         
     </Grid>
 </Page>

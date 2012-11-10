@@ -44,6 +44,15 @@ namespace Recipe_Box
             this.cardGrid.PointerMoved += mainGrid_PointerMoved;
         }
 
+        public void setup()
+        {
+            for (int i = 0; i < 8 && i < MainPage.AllCards.Count(); i++)
+            {
+                (this.cardGrid.Children[i] as Border).Child = MainPage.AllCards[i];
+            }
+            this.cardGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+        }
+
         void mainGrid_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
             Point p = e.GetCurrentPoint(this).Position;
@@ -61,6 +70,7 @@ namespace Recipe_Box
                 y1 = (int)p.Y;
             }
         }
+        int cardcount = 8;
         Storyboard storyBoard = new Storyboard();
         void shift()
         {
@@ -69,9 +79,16 @@ namespace Recipe_Box
             front = (front + 1) % 8;
             int index = front;
             Reorder(front);
+            int card = cardcount % MainPage.AllCards.Count();
+            if (card == 0)
+            {
+                UIElement test = (MainPage.AllCards[card].Parent as UIElement);
+            }
+            (this.cardGrid.Children[((front - 1) + 8) % 8] as Border).Child = MainPage.AllCards[card];
+            cardcount++;
             for (int i = 0; i <8; i++)
             {
-                Border element = (Border)this.cardGrid.Children[7 - i];
+                Border element = (Border)this.cardGrid.Children[index];
                 DoubleAnimation doubleAnimation = new DoubleAnimation();
                 doubleAnimation.EnableDependentAnimation = true;
                 doubleAnimation.From = (i + 1) * 35;
@@ -107,37 +124,48 @@ namespace Recipe_Box
                 String x = ex.ToString();
             }
         }
-        void Reorder(int front)
+
+        void Reorder(int first)
         {
-			UIElement[] children = { null, null, null, null, null, null, null, null };
-			this.cardGrid.Children.CopyTo(children, 0);
-			this.cardGrid.Children.Clear();
-			for (int i = 7; i >= 0; i--)
-			{
-				this.cardGrid.Children.Add(children[i]);
-			}
-            UIElement oldelem;
-            UIElement newelem;
             int index = front;
-            newelem = this.cardGrid.Children[front];
-            this.cardGrid.Children.RemoveAt(front);
-            index = ((index - 1) + 7) % 7;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
             {
-                oldelem = this.cardGrid.Children[index];
-                this.cardGrid.Children.RemoveAt(index);
-                this.cardGrid.Children.Insert(index, newelem);
-                newelem = oldelem;
-                index = ((index - 1) + 7) % 7;
-            }
-            this.cardGrid.Children.Insert(front, newelem);
-            UIElement[] children2 = { null, null, null, null, null, null, null, null };
-            this.cardGrid.Children.CopyTo(children2, 0);
-            this.cardGrid.Children.Clear();
-            for (int i = 7; i >= 0; i--)
-            {
-                this.cardGrid.Children.Add(children2[i]);
+                Canvas.SetZIndex(this.cardGrid.Children[index], 8 - i);
+                index = ((index + 1) + 8) % 8;
             }
         }
+
+        //void Reorder(int front)
+        //{
+        //    UIElement[] children = { null, null, null, null, null, null, null, null };
+        //    this.cardGrid.Children.CopyTo(children, 0);
+        //    this.cardGrid.Children.Clear();
+        //    for (int i = 7; i >= 0; i--)
+        //    {
+        //        this.cardGrid.Children.Add(children[i]);
+        //    }
+        //    UIElement oldelem;
+        //    UIElement newelem;
+        //    int index = front;
+        //    newelem = this.cardGrid.Children[front];
+        //    this.cardGrid.Children.RemoveAt(front);
+        //    index = ((index - 1) + 7) % 7;
+        //    for (int i = 0; i < 7; i++)
+        //    {
+        //        oldelem = this.cardGrid.Children[index];
+        //        this.cardGrid.Children.RemoveAt(index);
+        //        this.cardGrid.Children.Insert(index, newelem);
+        //        newelem = oldelem;
+        //        index = ((index - 1) + 7) % 7;
+        //    }
+        //    this.cardGrid.Children.Insert(front, newelem);
+        //    UIElement[] children2 = { null, null, null, null, null, null, null, null };
+        //    this.cardGrid.Children.CopyTo(children2, 0);
+        //    this.cardGrid.Children.Clear();
+        //    for (int i = 7; i >= 0; i--)
+        //    {
+        //        this.cardGrid.Children.Add(children2[i]);
+        //    }
+        //}
     }
 }
