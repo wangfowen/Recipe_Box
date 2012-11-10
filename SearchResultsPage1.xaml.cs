@@ -77,8 +77,8 @@ namespace Recipe_Box
                 selectedFilter.Active = true;
 
                 List<MyUserControl1> filteredCards = CardSearch.SearchFor(MainPage.AllData, this.DefaultViewModel["QueryText"].ToString());
-
-                searchResultsCarousel.provideSearchResults(filteredCards);
+                this.DefaultViewModel["Results"] = filteredCards;
+                //searchResultsCarousel.provideSearchResults(filteredCards);
 
 
 
