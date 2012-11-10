@@ -24,11 +24,24 @@ namespace Recipe_Box
         public cardViewer()
         {
             this.InitializeComponent();
-            this.cardGrid.PointerMoved += mainGrid_PointerMoved;
+            this.cardGrid.PointerPressed += cardGrid_PointerPressed;
+            this.cardGrid.PointerExited += cardGrid_PointerReleased;
+            this.cardGrid.PointerReleased += cardGrid_PointerReleased;
+
             for (int i = 0; i < 8; i++)
             {
                 Border b = new Border();
             }
+        }
+
+        void cardGrid_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
+        }
+
+        void cardGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            this.cardGrid.PointerMoved += mainGrid_PointerMoved;
         }
 
         void mainGrid_PointerMoved(object sender, PointerRoutedEventArgs e)

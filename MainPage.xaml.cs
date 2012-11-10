@@ -20,8 +20,13 @@ namespace Recipe_Box
         public MainPage()
         {
             this.InitializeComponent();
-            //cardViewer viewer = new cardViewer();
-            //this.mainGrid.Children.Add(viewer);
+            this.AddCard.Click += AddCard_Click;
+        }
+
+        void AddCard_Click(object sender, RoutedEventArgs e)
+        {
+            // Implement adding card view here.
+            throw new NotImplementedException();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
