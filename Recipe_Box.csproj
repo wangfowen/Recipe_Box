@@ -100,16 +100,19 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="Card\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="cardViewer.xaml.cs">
       <DependentUpon>cardViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Card\CardObj.cs" />
+    <Compile Include="Card\LocalAppData.cs" />
+    <Compile Include="Card\MainPage.xaml.cs" />
+    <Compile Include="Card\NumberSelector.xaml.cs" />
+    <Compile Include="Card\recipeCard.xaml.cs" />
+    <Compile Include="Card\SaveAndLoad.cs" />
+    <Compile Include="Card\UnitSelector.xaml.cs" />
     <Compile Include="EditCard.xaml.cs">
       <DependentUpon>EditCard.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Card\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Card\NumberSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Card\recipeCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Card\UnitSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Common\StandardStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -152,6 +171,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="XAMLMetroAppIsolatedStorageHelper">
+      <HintPath>Card\XAMLMetroAppIsolatedStorageHelper.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

@@ -10,7 +10,7 @@ using System.Runtime.Serialization;
 using Windows.Storage.Streams;
 using XAMLMetroAppIsolatedStorageHelper;
 
-namespace recipecards
+namespace Recipe_Box
 {
     class SaveAndLoad
     {
