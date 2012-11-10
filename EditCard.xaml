@@ -13,7 +13,6 @@
             <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="LeftPanel" Background="White" Grid.Column="0" Grid.Row="0">
-            <!--<TextBox x:Name="TitleTextBox" Text="Test" Padding="5" Drop="TextBox_Drop" AllowDrop="True" />-->
         </StackPanel>
         <StackPanel x:Name="SideContainer" Grid.Column="1" Grid.Row="0">
             <StackPanel.Resources>
@@ -37,16 +36,18 @@
             </StackPanel.Resources>
 
             <StackPanel x:Name="CategoryPanel" Background="#F6F6F6">
+                <TextBlock Text="Select a Category of Ingredients to Add" Foreground="Black" FontSize="20" />
                 <ListView x:Name="CategoryView" Foreground="Black" Padding="5" ItemsSource="{Binding}" ItemClick="FilterTags" IsItemClickEnabled="True">
                 </ListView>
-                <TextBox x:Name="CategoryTextBox" Foreground="Black" Text="New Category" Padding="5" GotFocus="ClearBox" KeyDown="SubmitCategoryForm" />
+                <TextBox x:Name="CategoryTextBox" Foreground="Gray" Text="New Category" Padding="5" GotFocus="ClearBox" LostFocus="RefillCategory" KeyDown="SubmitCategoryForm" />
                 <Button x:Name="AddCategoryButton" Foreground="Black" Content="+" Click="AddCategory" />
             </StackPanel>
 
             <StackPanel x:Name="TagPanel" Background="BlanchedAlmond" Visibility="Collapsed">
+                <TextBlock Text="Drag and Drop Ingredients to Add to Recipe" Foreground="Black" FontSize="20" />
                 <ListView x:Name="TagView"  Padding="5" Foreground="Black"  DragItemsStarting="TagView_DragItemsStarting" CanDragItems="True" ItemsSource="{Binding}">
                 </ListView>
-                <TextBox x:Name="TagTextBox" Foreground="Black" Text="New Ingredient" Padding="5" GotFocus="ClearBox" KeyDown="SubmitTagForm" />
+                <TextBox x:Name="TagTextBox" Foreground="Gray" Text="New Ingredient" Padding="5" GotFocus="ClearBox" LostFocus="RefillTag" KeyDown="SubmitTagForm" />
                 <Button x:Name="AddTagButton" Foreground="Black" Content="+" Click="AddTag" />
                 <TextBox x:Name="TagCategory" Visibility="Collapsed" />
                 <Button x:Name="Back" Foreground="Black" Content="Back" Click="ShowCategoryPanel" />
