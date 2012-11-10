@@ -126,6 +126,7 @@ namespace Recipe_Box
             tx.Drop += DragEventHandler;
             tx.GotFocus += OnEnter1;
             tx.LostFocus += tx_LostFocus;
+            tx.KeyDown += OnPressEnter;
             sp.Children.Add(tx);
             this.recipePanel.Children.Add(sp);
         }
@@ -134,8 +135,38 @@ namespace Recipe_Box
         {
             TextBox tx = (TextBox)sender;
             StackPanel parent = (StackPanel)tx.Parent;
+            finalizeAndAddRow(parent);
+
+            if (tx.Text == "")
+            {
+                tx.Text = "Drag and drop ingredient here";
+                tx.Foreground = new SolidColorBrush(Color.FromArgb(255, 128, 128, 128));
+            }
+        }
+
+        void numselector_OnChange(object sender, EventArgs e)
+        {
+            NumberSelector ns = (NumberSelector)sender;
+            StackPanel parent = (StackPanel)ns.Parent;
+            finalizeAndAddRow(parent);  
+        }
+
+        private void OnPressEnter(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                TextBox tx = (TextBox)sender;
+                StackPanel parent = (StackPanel)tx.Parent;
+                finalizeAndAddRow(parent);
+            }
+        }
+
+        void finalizeAndAddRow(StackPanel parent)
+        {
+            TextBox tx = (TextBox)parent.Children[2];
+
             if (tx.Text != "Drag and drop ingredient here" && tx.Text != "" && parent.Children.Count == 3 && parent.Orientation == Orientation.Horizontal)
-            {   
+            {
                 NumberSelector NS = (NumberSelector)parent.Children[0];
                 UnitSelector US = (UnitSelector)parent.Children[1];
                 if (NS.getSelectedValue() != "")
@@ -147,20 +178,9 @@ namespace Recipe_Box
                     int index = parentparent.Children.IndexOf(parent);
                     parentparent.Children.Remove(parent);
                     parentparent.Children.Insert(index, tx);
-                    //addRow();  
+                    addRow();
                 }
             }
-
-            if (tx.Text == "")
-            {
-                tx.Text = "Drag and drop ingredient here";
-                tx.Foreground = new SolidColorBrush(Color.FromArgb(255, 128, 128, 128));
-            }
-        }
-
-        void numselector_OnChange(object sender, EventArgs e)
-        {
-            addRow();  
         }
 
         private void DragEventHandler(object sender, DragEventArgs e)
@@ -172,6 +192,7 @@ namespace Recipe_Box
                 SenderBox.Text = "";
             }
             SenderBox.Text += " " + MainPage.DraggedItem;
+            SenderBox.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
            
 		}    
 

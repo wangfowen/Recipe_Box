@@ -27,7 +27,7 @@ namespace Recipe_Box
 
             //cardViewer viewer = new cardViewer();
             //this.mainGrid.Children.Add(viewer);
-            EditCard Card = new EditCard();
+            EditCard Card = new EditCard(null);
             this.mainGrid.Children.Add(Card);
 
 
