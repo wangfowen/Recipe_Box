@@ -52,6 +52,7 @@ namespace Recipe_Box
                     control.Height = 400;
                     control.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
                     control.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
+                    control.disableEditing();
                     MainPage.AllCards.Add(control);
                 }
                 this.cardCarousel.setup();
