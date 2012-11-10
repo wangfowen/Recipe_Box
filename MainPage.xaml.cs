@@ -22,6 +22,7 @@ namespace Recipe_Box
         public MainPage()
         {
             this.InitializeComponent();
+
             //cardViewer viewer = new cardViewer();
             //this.mainGrid.Children.Add(viewer);
             //EditCard Card = new EditCard();
@@ -30,6 +31,15 @@ namespace Recipe_Box
 
             /*************SETUP LOCAL STORAGE**********************/
             this.GotFocus += MainPage_GotFocus;
+
+            this.AddCard.Click += AddCard_Click;
+        }
+
+        void AddCard_Click(object sender, RoutedEventArgs e)
+        {
+            // Implement adding card view here.
+            throw new NotImplementedException();
+
         }
 
 
