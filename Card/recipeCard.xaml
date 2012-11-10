@@ -212,7 +212,7 @@
 	</UserControl.Resources>
     <Grid Margin="0">
     	<Grid.Background>
-    		<ImageBrush ImageSource="Assets/Clipboard02.png"/>
+    		<ImageBrush ImageSource="ms-appx:///Assets/Clipboard02.png" Opacity="0.99500000476837158"/>
     	</Grid.Background>
     	<FlipView HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource FlipViewStyle1}">
     		<FlipViewItem Padding="0,0,6,0">
