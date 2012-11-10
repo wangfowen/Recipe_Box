@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace Recipe_Box
+namespace recipecards
 {
     public sealed partial class MyUserControl1 : UserControl
     {
@@ -29,10 +29,10 @@ namespace Recipe_Box
             this.width = width;
             this.height = height;
 
-            //if (1 == 1)
-                //this.LoadDataOfCard();
-            //else
-            //{
+            if (1 == 1)
+                this.LoadDataOfCard();
+            else
+            {
                 addRow();
                 for (int i = 0; i < 10; ++i)
                 {
@@ -64,6 +64,7 @@ namespace Recipe_Box
                 SaveButt.FontSize = 13;
                 SaveButt.FontFamily = new FontFamily("Segoe UI");
                 SaveButt.Visibility = Visibility.Visible;
+                SaveButt.Opacity = 20;
                 SaveButt.Foreground = new SolidColorBrush(Color.FromArgb(255, 128, 128, 128));
                 SaveButt.Width = 40;
                 SaveButt.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center;
@@ -71,7 +72,7 @@ namespace Recipe_Box
                 SaveButt.Click += SaveButt_Click;
                 this.reversePanel.Children.Add(SaveButt);
 
-            //}
+            }
 
             
 
@@ -217,6 +218,9 @@ namespace Recipe_Box
                     {
                         TextBox FinalEntryBox = new TextBox();
                         FinalEntryBox.Text = NS.getSelectedValue() + " " + US.getSelectedValue() + " " + TX.Text;
+                        /************/
+
+                        /************/
                         FinalEntryBox.Width = width;
                         ThisEntry.Children.Clear();
                         StackPanel Card = (StackPanel)ThisEntry.Parent;
@@ -279,19 +283,29 @@ namespace Recipe_Box
             LocalAppData AllCardsCollection = await DataSaverLoader.LoadData();
 
             CardObj CardData = AllCardsCollection.AllCardData[AllCardsCollection.CardCount - 1];
-            foreach (string Ingredient in CardData.IngredientList)
-            {
-                TextBox tx = new TextBox();
-                tx.BorderThickness = new Thickness(0);
-                tx.FontSize = 16;
-                tx.FontFamily = new FontFamily("Segoe UI");
-                tx.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                tx.BorderBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                tx.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch;
-                tx.Text = Ingredient;
-                this.recipePanel.Children.Add(tx);
-            }
 
+            for (int i = 0; i<CardData.IngredientList.Count; i++)
+            {
+                if (i == 0)
+                {
+                    TextBox tx = (TextBox) this.recipePanel.Children[0];
+                    tx.Text = CardData.IngredientList[i].ToString();
+                }
+                else
+                {
+                    TextBox tx = new TextBox();
+                    tx.BorderThickness = new Thickness(0);
+                    tx.FontSize = 16;
+                    tx.FontFamily = new FontFamily("Segoe UI");
+                    tx.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                    tx.BorderBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                    tx.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch;
+                    tx.Text = CardData.IngredientList[i].ToString();
+                    this.recipePanel.Children.Add(tx);
+                }
+               
+            }
+          
 
             foreach (string Instruction in CardData.InstructionList)
             {
