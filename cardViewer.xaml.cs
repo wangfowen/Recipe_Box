@@ -85,14 +85,6 @@ namespace Recipe_Box
                 storyBoard.Children.Add(doubleAnimation3);
                 index = (index + 1) % 8;
             }
-            //DoubleAnimation doubleAnimation4 = new DoubleAnimation();
-            //doubleAnimation4.EnableDependentAnimation = true;
-            //doubleAnimation4.From = 255;
-            //doubleAnimation4.To = 0;
-            //doubleAnimation4.Duration = new Duration(TimeSpan.FromMilliseconds(100));
-            //Storyboard.SetTarget(doubleAnimation4, this.mainGrid.Children[0]);
-            //Storyboard.SetTargetProperty(doubleAnimation4, "(Opacity)");
-            //storyBoard.Children.Add(doubleAnimation4);
             try
             {
                 storyBoard.Begin();
@@ -101,8 +93,6 @@ namespace Recipe_Box
             {
                 String x = ex.ToString();
             }
-            
-            
         }
         bool first = true;
         void Reorder(int front)
