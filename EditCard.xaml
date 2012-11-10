@@ -12,8 +12,8 @@
             <ColumnDefinition />
             <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Background="White" Grid.Column="0" Grid.Row="0">
-            <TextBox x:Name="TitleTextBox" Text="Test" Padding="5" Drop="TitleTextBox_Drop" AllowDrop="True" />
+        <StackPanel x:Name="LeftPanel" Background="White" Grid.Column="0" Grid.Row="0">
+            <!--<TextBox x:Name="TitleTextBox" Text="Test" Padding="5" Drop="TextBox_Drop" AllowDrop="True" />-->
         </StackPanel>
         <StackPanel x:Name="SideContainer" Grid.Column="1" Grid.Row="0">
             <StackPanel.Resources>

@@ -29,10 +29,10 @@ namespace Recipe_Box
             this.width = width;
             this.height = height;
 
-            if (1 == 1)
-                this.LoadDataOfCard();
-            else
-            {
+            //if (1 == 1)
+                //this.LoadDataOfCard();
+            //else
+            //{
                 addRow();
                 for (int i = 0; i < 10; ++i)
                 {
@@ -56,6 +56,7 @@ namespace Recipe_Box
                     }
 
                     tx.Width = width;
+                    tx.AllowDrop = true;
                     tx.Drop += DragEventHandler;
                     this.reversePanel.Children.Add(tx);
                 }
@@ -72,7 +73,7 @@ namespace Recipe_Box
                 SaveButt.Click += SaveButt_Click;
                 this.reversePanel.Children.Add(SaveButt);
 
-            }
+            //}
 
             
 
@@ -117,6 +118,9 @@ namespace Recipe_Box
             tx.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch;
             tx.Text = "Drag and drop ingredient here";
             tx.Width = width - 130;
+            tx.AllowDrop = true;
+
+            //tx.Drop += ((EditCard)this.Parent).TextBox_Drop;
             tx.Drop += DragEventHandler;
             tx.GotFocus += OnEnter1;
             tx.LostFocus += tx_LostFocus;
@@ -152,7 +156,9 @@ namespace Recipe_Box
 
         private void DragEventHandler(object sender, DragEventArgs e)
         {
-            throw new NotImplementedException();
+            TextBox SenderBox = (TextBox)sender;
+            SenderBox.Text += " " + MainPage.DraggedItem;
+           
 		}    
 
         private void OnEnter(object sender, Windows.UI.Xaml.RoutedEventArgs e)

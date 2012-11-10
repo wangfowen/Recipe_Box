@@ -38,20 +38,34 @@ namespace Recipe_Box
 
             this.TagView.DataContext = tagsList;
             this.CategoryView.DataContext = categoriesList;
+
+
+
+            /*****NEW STUFF BINDING CARDS AND DRAG AND DROP TOGETHER****/
+            MyUserControl1 control = new MyUserControl1(600, 400);
+            control.Width = 600;
+            control.Height = 400;
+            control.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
+            control.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
+            
+            this.LeftPanel.Children.Add(control);
+            
+            
         }
 
-        private void TitleTextBox_Drop(object sender, DragEventArgs e)
+        private void TextBox_Drop(object sender, DragEventArgs e)
         {
             if (DraggedTag != null)
             {
-                this.TitleTextBox.Text = DraggedTag;
+                TextBox SendBox = (TextBox)sender;
             }
         }
 
         private void TagView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
             DraggedTag = e.Items[0].ToString();
-            this.TitleTextBox.Text = "dragging";
+            MainPage.DraggedItem = e.Items[0].ToString();
+            //this.TitleTextBox.Text = "dragging";
         }
 
         private void FilterTags(object sender, ItemClickEventArgs e)
@@ -126,6 +140,9 @@ namespace Recipe_Box
             this.CategoryPanel.Visibility = Visibility.Visible;
             this.TagPanel.Visibility = Visibility.Collapsed;
         }
+        
+        //public string 
+
 
         //public void Flip()
         //{
