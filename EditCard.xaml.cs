@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
+using Windows.UI;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -51,14 +52,6 @@ namespace Recipe_Box
             this.LeftPanel.Children.Add(control);
             
             
-        }
-
-        private void TextBox_Drop(object sender, DragEventArgs e)
-        {
-            if (DraggedTag != null)
-            {
-                TextBox SendBox = (TextBox)sender;
-            }
         }
 
         private void TagView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
@@ -117,6 +110,21 @@ namespace Recipe_Box
         {
             TextBox box = (TextBox)sender;
             box.Text = "";
+            box.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+        }
+
+        private void RefillTag(object sender, RoutedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            box.Text = "New Ingredient";
+            box.Foreground = new SolidColorBrush(Color.FromArgb(255, 128, 128, 128));
+        }
+
+        private void RefillCategory(object sender, RoutedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            box.Text = "New Category";
+            box.Foreground = new SolidColorBrush(Color.FromArgb(255, 128, 128, 128));
         }
 
         private void SubmitTagForm(object sender, KeyRoutedEventArgs e)

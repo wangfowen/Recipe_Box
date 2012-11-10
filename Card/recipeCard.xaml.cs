@@ -147,13 +147,20 @@ namespace Recipe_Box
                     int index = parentparent.Children.IndexOf(parent);
                     parentparent.Children.Remove(parent);
                     parentparent.Children.Insert(index, tx);
+                    //addRow();  
                 }
+            }
+
+            if (tx.Text == "")
+            {
+                tx.Text = "Drag and drop ingredient here";
+                tx.Foreground = new SolidColorBrush(Color.FromArgb(255, 128, 128, 128));
             }
         }
 
         void numselector_OnChange(object sender, EventArgs e)
         {
-            addRow();
+            addRow();  
         }
 
         private void DragEventHandler(object sender, DragEventArgs e)
