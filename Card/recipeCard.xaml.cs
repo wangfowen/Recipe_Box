@@ -66,14 +66,16 @@ namespace Recipe_Box
                     this.reversePanel.Children.Add(tx);
                 }
                 Button SaveButt = new Button();
-                SaveButt.BorderThickness = new Thickness(0);
-                SaveButt.FontSize = 13;
-                SaveButt.FontFamily = new FontFamily("Segoe UI");
+                //SaveButt.BorderThickness = new Thickness(0);
+                SaveButt.FontSize = 16;
+                
+                
                 SaveButt.Visibility = Visibility.Visible;
-                SaveButt.Opacity = 20;
+                //SaveButt.Opacity = 5000;
                 SaveButt.Foreground = new SolidColorBrush(Color.FromArgb(255, 128, 128, 128));
-                SaveButt.Width = 40;
-                SaveButt.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center;
+                SaveButt.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                SaveButt.Width = 500;
+                //SaveButt.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Center;
                 SaveButt.Content = "Save";
                 SaveButt.Click += SaveButt_Click;
                 this.reversePanel.Children.Add(SaveButt);
@@ -363,7 +365,10 @@ namespace Recipe_Box
                 TextBox ThisEntry = (TextBox)this.recipePanel.Children[i];
                 DataToBeSaved.IngredientList.Add(ThisEntry.Text.ToString());
                 if (i == 0) //first entry is title add to tags
+                {
                     DataToBeSaved.TagsList.Add(ThisEntry.Text.ToString());
+                    DataToBeSaved.CardTitle = ThisEntry.Text.ToString();
+                }
             }
 
 
@@ -386,7 +391,25 @@ namespace Recipe_Box
 
 
             LocalAppData AllCardsCollection = await DataSaverLoader.LoadData();
-            AllCardsCollection.AddCard(DataToBeSaved);
+            int ReplaceIndex = -1;
+            for (int i = 0; i < AllCardsCollection.AllCardData.Count; i++)
+            {
+                if (DataToBeSaved.CardTitle == AllCardsCollection.AllCardData[i].CardTitle)
+                {
+                    ReplaceIndex = i;
+                    break;
+                }
+            }
+
+            if (ReplaceIndex != -1) //Replace
+            {
+                AllCardsCollection.AllCardData[ReplaceIndex] = DataToBeSaved;
+            }
+            else
+            {
+                AllCardsCollection.AddCard(DataToBeSaved);
+            }
+            
             
             //Create File name
             //string CardFileName = "CardFile" + CurrentCardCount.ToString();

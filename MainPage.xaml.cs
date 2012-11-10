@@ -20,6 +20,7 @@ namespace Recipe_Box
         public int FocusCount = 0;
         public static LocalAppData AllData = new LocalAppData();
         public static List<MyUserControl1> AllCards = new List<MyUserControl1>();
+        public int CurrentViewingCard = -1;
         
         public MainPage()
         {

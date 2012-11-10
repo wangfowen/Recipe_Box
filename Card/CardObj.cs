@@ -11,13 +11,23 @@ namespace Recipe_Box
         private List<string> ingredient_list;
         private List<string> instruction_list;
         private List<string> tags_list;
-
+        private string card_title;
         public CardObj()
         {
             ingredient_list = new List<string>();
             instruction_list = new List<string>();
             tags_list = new List<string>();
+            card_title = "";
         }
+
+
+        public string CardTitle 
+        {
+            get { return this.card_title; }
+            set { this.card_title = value; }
+
+        }
+
 
         public List<string> IngredientList
         {
