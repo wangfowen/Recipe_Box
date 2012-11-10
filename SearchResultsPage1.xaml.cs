@@ -77,28 +77,11 @@ namespace Recipe_Box
                 selectedFilter.Active = true;
 
                 List<MyUserControl1> filteredCards = CardSearch.SearchFor(MainPage.AllData, this.DefaultViewModel["QueryText"].ToString());
-                this.DefaultViewModel["Results"] = filteredCards;
-                //searchResultsCarousel.provideSearchResults(filteredCards);
-
-
-
-                // TODO: Respond to the change in active filter by setting this.DefaultViewModel["Results"]
-                //       to a collection of items with bindable Image, Title, Subtitle, and Description properties
-
-                // Ensure results are found
-                object results;
-                ICollection resultsCollection;
-                if (this.DefaultViewModel.TryGetValue("Results", out results) &&
-                    (resultsCollection = results as ICollection) != null &&
-                    resultsCollection.Count != 0)
-                {
-                    VisualStateManager.GoToState(this, "ResultsFound", true);
-                    return;
-                }
+                searchResultsCarousel.provideSearchResults(filteredCards);
             }
 
             // Display informational text when there are no search results.
-            VisualStateManager.GoToState(this, "NoResultsFound", true);
+            //VisualStateManager.GoToState(this, "NoResultsFound", true);
         }
 
         /// <summary>
