@@ -9,13 +9,16 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-			<ColumnDefinition/>
-			<ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
 		<StackPanel Background="Red" Grid.Column="0" Grid.Row="0">
             <TextBox x:Name="TitleTextBox" Text="Test" Drop="TitleTextBox_Drop" AllowDrop="True" />
         </StackPanel>
-        <GridView x:Name="TagGridView" Grid.Column="1" Grid.Row="0" Background="Blue" DragItemsStarting="TagGridView_DragItemsStarting" CanDragItems="True" ItemsSource="{Binding}">
+        <GridView x:Name="CategoryGridView" Grid.Column="1" Grid.Row="0" Background="Green" ItemsSource="{Binding}" ItemClick="FilterTags" IsItemClickEnabled="True">
+        </GridView>
+        <GridView x:Name="TagGridView" Grid.Column="2" Grid.Row="0" Background="Blue" DragItemsStarting="TagGridView_DragItemsStarting" CanDragItems="True" ItemsSource="{Binding}">
         </GridView>
 		</Grid>
 </Page>

@@ -29,14 +29,8 @@ namespace Recipe_Box
         {
             this.InitializeComponent();
 
-            List<Tag> tags = tagDatabase.FindByCategory("baking");
-
-            foreach (Tag tag in tags)
-            {
-                tagsList.Add(tag);
-            }
-
             this.TagGridView.DataContext = tagsList;
+            this.CategoryGridView.DataContext = tagDatabase.CategoriesCollection();
         }
 
         /// <summary>
@@ -60,6 +54,14 @@ namespace Recipe_Box
         {
             DraggedTag = e.Items[0].ToString();
             this.TitleTextBox.Text = "dragging";
+        }
+
+        private void FilterTags(object sender, ItemClickEventArgs e)
+        {
+            string category = e.ClickedItem.ToString();
+
+            tagsList = tagDatabase.TagCollectionFromCategory(category);
+            this.TagGridView.DataContext = tagsList;
         }
     }
 }
