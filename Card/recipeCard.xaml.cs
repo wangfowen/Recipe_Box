@@ -62,7 +62,7 @@ namespace Recipe_Box
                     tx.Drop += DragEventHandler;
                     tx.DragEnter += Highlight;
                     tx.DragLeave += Unhighlight;
-                    tx.KeyDown += OnPressEnter;
+                    tx.KeyDown += EnterNextLine;
                     this.reversePanel.Children.Add(tx);
                 }
                 Button SaveButt = new Button();
@@ -167,24 +167,38 @@ namespace Recipe_Box
             }
         }
 
+        private void EnterNextLine(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                TextBox tx = (TextBox)sender;
+
+                //tx.Text = "1. " + tx.Text;
+            }
+        }
+
         void finalizeAndAddRow(StackPanel parent)
         {
-            NumberSelector NS = (NumberSelector)parent.Children[0];
-            UnitSelector US = (UnitSelector)parent.Children[1];
-            TextBox tx = (TextBox)parent.Children[2];
 
-            if (tx.Text != "Drag and drop ingredient here" && tx.Text != "" && parent.Children.Count == 3 && parent.Orientation == Orientation.Horizontal)
+            if (parent.Name == "recipePanel")
             {
-                if (NS.getSelectedValue() != "")
+                NumberSelector NS = (NumberSelector)parent.Children[0];
+                UnitSelector US = (UnitSelector)parent.Children[1];
+                TextBox tx = (TextBox)parent.Children[2];
+
+                if (tx.Text != "Drag and drop ingredient here" && tx.Text != "" && parent.Children.Count == 3 && parent.Orientation == Orientation.Horizontal)
                 {
-                    tx.Text = NS.getSelectedValue() + " " + US.getSelectedValue() + " " + tx.Text;
-                    tx.Width = width;
-                    parent.Children.Clear();
-                    StackPanel parentparent = (StackPanel)parent.Parent;
-                    int index = parentparent.Children.IndexOf(parent);
-                    parentparent.Children.Remove(parent);
-                    parentparent.Children.Insert(index, tx);
-                    addRow();
+                    if (NS.getSelectedValue() != "")
+                    {
+                        tx.Text = NS.getSelectedValue() + " " + US.getSelectedValue() + " " + tx.Text;
+                        tx.Width = width;
+                        parent.Children.Clear();
+                        StackPanel parentparent = (StackPanel)parent.Parent;
+                        int index = parentparent.Children.IndexOf(parent);
+                        parentparent.Children.Remove(parent);
+                        parentparent.Children.Insert(index, tx);
+                        addRow();
+                    }
                 }
             }
         }
