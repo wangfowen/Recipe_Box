@@ -43,17 +43,21 @@ namespace Recipe_Box
             this.tags.Add(new Tag("milk", categories["baking"]));
             this.tags.Add(new Tag("chicken", categories["meat"]));
             this.tags.Add(new Tag("steak", categories["meat"]));
-
         }
 
         public void AddTag(string name, string category)
         {
-            this.tags.Add(new Tag(name, categories[category]));
+            this.tags.Add(new Tag(name, this.categories[category]));
         }
 
         public void AddCategory(string name)
         {
             this.categories.Add(name, this.categories.Count);
+        }
+
+        public Boolean HasCategory(string name)
+        {
+            return this.categories.ContainsKey(name);
         }
 
         private List<Tag> FindByCategory(string category)
