@@ -75,11 +75,8 @@ namespace Recipe_Box
                 SaveButt.Click += SaveButt_Click;
                 this.reversePanel.Children.Add(SaveButt);
 
-
             }
-            
 
-           
         }
 
         void SaveButt_Click(object sender, RoutedEventArgs e)
@@ -259,9 +256,9 @@ namespace Recipe_Box
                     {
                         TextBox FinalEntryBox = new TextBox();
                         FinalEntryBox.Text = NS.getSelectedValue() + " " + US.getSelectedValue() + " " + TX.Text;
-                        /************/
-
-                        /************/
+                        /******INSERT TAG******/
+                        DataToBeSaved.TagsList.Add(TX.Text);
+                        /******INSERT TAG******/
                         FinalEntryBox.Width = width;
                         ThisEntry.Children.Clear();
                         StackPanel Card = (StackPanel)ThisEntry.Parent;

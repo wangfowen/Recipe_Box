@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using Recipe_Box.Card;
 // The Search Contract item template is documented at http://go.microsoft.com/fwlink/?LinkId=234240
 
 namespace Recipe_Box
@@ -55,7 +55,8 @@ namespace Recipe_Box
             filterList.Add(new Filter("All", 0, true));
 
             // Communicate results through the view model
-            this.DefaultViewModel["QueryText"] = '\u201c' + queryText + '\u201d';
+            //this.DefaultViewModel["QueryText"] = '\u201c' + queryText + '\u201d';
+            this.DefaultViewModel["QueryText"] = queryText;
             this.DefaultViewModel["Filters"] = filterList;
             this.DefaultViewModel["ShowFilters"] = filterList.Count > 1;
         }
@@ -75,9 +76,18 @@ namespace Recipe_Box
                 // RadioButton representation used when not snapped to reflect the change
                 selectedFilter.Active = true;
 
-                List<CardObj> filteredCards = new List<CardObj>();
+                List<MyUserControl1> filteredCards = CardSearch.SearchFor(MainPage.AllData, this.DefaultViewModel["QueryText"].ToString());
 
                 this.DefaultViewModel["Results"] = filteredCards;
+
+
+
+
+
+
+
+
+
 
                 // TODO: Respond to the change in active filter by setting this.DefaultViewModel["Results"]
                 //       to a collection of items with bindable Image, Title, Subtitle, and Description properties
