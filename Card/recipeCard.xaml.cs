@@ -157,6 +157,11 @@ namespace Recipe_Box
         private void DragEventHandler(object sender, DragEventArgs e)
         {
             TextBox SenderBox = (TextBox)sender;
+
+            if (SenderBox.Text == "Drag and drop ingredient here")
+            {
+                SenderBox.Text = "";
+            }
             SenderBox.Text += " " + MainPage.DraggedItem;
            
 		}    
