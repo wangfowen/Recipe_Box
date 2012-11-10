@@ -107,20 +107,15 @@ namespace Recipe_Box
                 String x = ex.ToString();
             }
         }
-        bool first = true;
         void Reorder(int front)
         {
-            if (true)
-            {
-                UIElement[] children = { null, null, null, null, null, null, null, null };
-                this.cardGrid.Children.CopyTo(children, 0);
-                this.cardGrid.Children.Clear();
-                for (int i = 7; i >= 0; i--)
-                {
-                    this.cardGrid.Children.Add(children[i]);
-                }
-                first = false;
-            }
+			UIElement[] children = { null, null, null, null, null, null, null, null };
+			this.cardGrid.Children.CopyTo(children, 0);
+			this.cardGrid.Children.Clear();
+			for (int i = 7; i >= 0; i--)
+			{
+				this.cardGrid.Children.Add(children[i]);
+			}
             UIElement oldelem;
             UIElement newelem;
             int index = front;
@@ -136,16 +131,12 @@ namespace Recipe_Box
                 index = ((index - 1) + 7) % 7;
             }
             this.cardGrid.Children.Insert(front, newelem);
-            if (true)
+            UIElement[] children2 = { null, null, null, null, null, null, null, null };
+            this.cardGrid.Children.CopyTo(children2, 0);
+            this.cardGrid.Children.Clear();
+            for (int i = 7; i >= 0; i--)
             {
-                UIElement[] children = { null, null, null, null, null, null, null, null };
-                this.cardGrid.Children.CopyTo(children, 0);
-                this.cardGrid.Children.Clear();
-                for (int i = 7; i >= 0; i--)
-                {
-                    this.cardGrid.Children.Add(children[i]);
-                }
-                first = false;
+                this.cardGrid.Children.Add(children2[i]);
             }
         }
     }
