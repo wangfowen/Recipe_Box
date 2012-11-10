@@ -108,6 +108,7 @@
       <DependentUpon>cardViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Card\CardObj.cs" />
+    <Compile Include="Card\Search.cs" />
     <Compile Include="Card\LocalAppData.cs" />
     <Compile Include="Card\NumberSelector.xaml.cs" />
     <Compile Include="Card\recipeCard.xaml.cs" />
