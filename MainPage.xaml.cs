@@ -21,6 +21,7 @@ namespace Recipe_Box
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        string DraggedTag = null;
         public MainPage()
         {
             this.InitializeComponent();
@@ -33,6 +34,20 @@ namespace Recipe_Box
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+        }
+
+        private void TitleTextBox_Drop(object sender, DragEventArgs e)
+        {
+            if (DraggedTag != null)
+            {
+                this.TitleTextBox.Text = DraggedTag;
+            }
+        }
+
+        private void TagGridView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+        {
+            DraggedTag = (string)e.Items[0];
+            this.TitleTextBox.Text = "dragging";
         }
     }
 }

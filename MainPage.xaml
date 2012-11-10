@@ -6,8 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+        <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="400"/>
+		</Grid.ColumnDefinitions>
+		<StackPanel Background="Red" Grid.Column="0" Grid.Row="0">
+            <TextBox x:Name="TitleTextBox" Text="Test" Drop="TitleTextBox_Drop" AllowDrop="True" />
+        </StackPanel>
+		<GridView x:Name="TagGridView" Grid.Column="1" Grid.Row="0" Background="Blue" DragItemsStarting="TagGridView_DragItemsStarting" CanDragItems="True" >
+            <GridView.Items>
+                <GridViewItem>Test1</GridViewItem>
+                <GridViewItem>Test2</GridViewItem>
+            </GridView.Items>
+        </GridView>
+		</Grid>
 </Page>

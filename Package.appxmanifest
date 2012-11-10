@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Recipe_Box.App">
-      <VisualElements DisplayName="Recipe Box" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="An app for managing your family recipes" ForegroundText="dark" BackgroundColor="#efd04a">
+      <VisualElements DisplayName="Recipe Box" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="An app for managing your family recipes" ForegroundText="light" BackgroundColor="#d5c680">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="Assets\SplashScreen.png" />
       </VisualElements>
