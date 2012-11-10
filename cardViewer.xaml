@@ -10,92 +10,82 @@
     d:DesignWidth="800">
     
     <Canvas x:Name="cardGrid" Background="#FFD5C680">
-		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Background="#FF727272" Canvas.Left="54" Canvas.Top="346">
+		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Canvas.Left="54" Canvas.Top="346">
+			<Border.Background>
+				<ImageBrush ImageSource="Assets/Clipboard02.png"/>
+			</Border.Background>
 			<Border.Projection>
 				<PlaneProjection GlobalOffsetY="-350" GlobalOffsetX="245" GlobalOffsetZ="-245"/>
 			</Border.Projection>
-			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
-				<Run Text="ONE"/>
-				<LineBreak/>
-				<Run/>
-			</TextBlock>
+			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48"/>
 		</Border>
-		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Background="#FF727272" Canvas.Left="54" Canvas.Top="346">
+		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Canvas.Left="54" Canvas.Top="346">
+			<Border.Background>
+				<ImageBrush ImageSource="Assets/Clipboard02.png"/>
+			</Border.Background>
 			<Border.Projection>
 				<PlaneProjection GlobalOffsetY="-300" GlobalOffsetX="210" GlobalOffsetZ="-210"/>
 			</Border.Projection>
-			<TextBlock TextWrapping="Wrap" Text="TWO" Foreground="Black" FontSize="48"/>
+			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48"/>
 		</Border>
-		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Background="#FF727272" Canvas.Left="54" Canvas.Top="346">
+		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Canvas.Left="54" Canvas.Top="346">
+			<Border.Background>
+				<ImageBrush ImageSource="Assets/Clipboard02.png"/>
+			</Border.Background>
 			<Border.Projection>
 				<PlaneProjection GlobalOffsetY="-250" GlobalOffsetX="175" GlobalOffsetZ="-175"/>
 			</Border.Projection>
-			<TextBlock TextWrapping="Wrap" Text="THREE" Foreground="Black" FontSize="48"/>
+			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48"/>
 		</Border>
         
-		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Background="#FF727272" Canvas.Left="54" Canvas.Top="346">
+		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Canvas.Left="54" Canvas.Top="346">
+			<Border.Background>
+				<ImageBrush ImageSource="Assets/Clipboard02.png"/>
+			</Border.Background>
 			<Border.Projection>
 				<PlaneProjection GlobalOffsetY="-200" GlobalOffsetX="140" GlobalOffsetZ="-140"/>
 			</Border.Projection>
-			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
-				<Run Text="FOUR"/>
-				<LineBreak/>
-				<Run/>
-			</TextBlock>
+			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48"/>
 		</Border>
         
-		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Background="#FF878787" Canvas.Left="54" Canvas.Top="346">
+		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Canvas.Left="54" Canvas.Top="346">
+			<Border.Background>
+				<ImageBrush ImageSource="Assets/Clipboard02.png"/>
+			</Border.Background>
 			<Border.Projection>
 				<PlaneProjection GlobalOffsetY="-150" GlobalOffsetX="105" GlobalOffsetZ="-105"/>
 			</Border.Projection>
-			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
-				<Run Text="FIVE"/>
-				<LineBreak/>
-				<Run Text="ASDLKJASFLKJASD"/>
-				<LineBreak/>
-				<Run/>
-			</TextBlock>
+			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48"/>
 		</Border>
         
-		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Background="#FFB2B2B2" Canvas.Left="54" Canvas.Top="346">
+		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Canvas.Left="54" Canvas.Top="346">
+			<Border.Background>
+				<ImageBrush ImageSource="Assets/Clipboard02.png"/>
+			</Border.Background>
 			<Border.Projection>
 				<PlaneProjection GlobalOffsetY="-100" GlobalOffsetX="70" GlobalOffsetZ="-70"/>
 			</Border.Projection>
-			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
-				<Run Text="SIX"/>
-				<LineBreak/>
-				<Run/>
-				<LineBreak/>
-				<Run Text="asdfasd"/>
-				<LineBreak/>
-				<Run/>
-			</TextBlock>
+			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48"/>
 		</Border>
         
-		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Background="#FFC9C9C9" Canvas.Left="54" Canvas.Top="346">
+		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Canvas.Left="54" Canvas.Top="346">
+			<Border.Background>
+				<ImageBrush ImageSource="Assets/Clipboard02.png"/>
+			</Border.Background>
 			<Border.Projection>
 				<PlaneProjection GlobalOffsetX="35" GlobalOffsetY="-50" GlobalOffsetZ="-35"/>
 			</Border.Projection>
-			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
-				<Run Text="SEVEN"/>
-				<LineBreak/>
-				<Run/>
-			</TextBlock>
+			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48"/>
 		</Border>
         
-		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Background="White" Canvas.Left="54" Canvas.Top="346">
+		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Canvas.Left="54" Canvas.Top="346">
+			<Border.Background>
+				<ImageBrush ImageSource="Assets/Clipboard02.png"/>
+			</Border.Background>
 			<Border.Projection>
 				<PlaneProjection GlobalOffsetY="1" GlobalOffsetX="1" GlobalOffsetZ="1"/>
 			</Border.Projection>
-			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
-				<Run Text="EIGHT"/>
-				<LineBreak/>
-				<Run/>
-				<LineBreak/>
-				<Run Text="CONTENT"/>
-				<LineBreak/>
-				<Run/>
-			</TextBlock>
+			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48"/>
 		</Border>
         
 	</Canvas>

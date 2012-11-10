@@ -24,110 +24,25 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid Style="{StaticResource LayoutRootStyle}">
+    <Grid Style="{StaticResource LayoutRootStyle}" Background="#FFD5C680">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid x:Name="resultsPanel" Grid.Row="1">
+        	<Canvas Margin="283,0" HorizontalAlignment="Center" Width="800" UseLayoutRounding="True">
+        		<local:cardViewer x:Name="searchResultsCarousel" HorizontalAlignment="Center" Height="700" VerticalAlignment="Center" Width="800" Canvas.Top="-48"/>
+        	</Canvas>
         <!--
             The body of the page in most view states uses an items controls to create multiple radio buttons
             for filtering above a horizontal scrolling grid of search results
         -->
-            <Grid x:Name="typicalPanel">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <ItemsControl
-                    x:Name="filtersItemsControl"
-                    Canvas.ZIndex="1"
-                    ItemsSource="{Binding Source={StaticResource filtersViewSource}}"
-                    Visibility="{Binding ShowFilters, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    Margin="120,-3,120,30">
-
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <RadioButton
-                                GroupName="Filters"
-                                IsChecked="{Binding Active, Mode=TwoWay}"
-                                Checked="Filter_Checked"
-                                Style="{StaticResource TextRadioButtonStyle}">
-                                <TextBlock Text="{Binding Description}"  Margin="3,-7,3,10" Style="{StaticResource GroupHeaderTextStyle}" />
-                            </RadioButton>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-
-                <GridView
-                    x:Name="resultsGridView"
-                    AutomationProperties.AutomationId="ResultsGridView"
-                    AutomationProperties.Name="Search Results"
-                    TabIndex="1"
-                    Grid.Row="1"
-                    Margin="0,-238,0,0"
-                    Padding="110,240,110,46"
-                    SelectionMode="None"
-                    IsSwipeEnabled="false"
-                    IsItemClickEnabled="True"
-                    ItemsSource="{Binding Source={StaticResource resultsViewSource}}"
-                    ItemTemplate="{StaticResource StandardSmallIcon300x70ItemTemplate}">
-                    
-                    <GridView.ItemContainerStyle>
-                        <Style TargetType="Control">
-                            <Setter Property="Height" Value="70"/>
-                            <Setter Property="Margin" Value="0,0,38,8"/>
-                       </Style>
-                    </GridView.ItemContainerStyle>
-                </GridView>
-            </Grid>
 
             <!--
                 The body of the page when snapped uses a combo box to select a filter above a
                 vertical scrolling list of search results
             -->
-            <Grid x:Name="snappedPanel" Visibility="Collapsed">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <ComboBox
-                    ItemsSource="{Binding Source={StaticResource filtersViewSource}}"
-                    Visibility="{Binding ShowFilters, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    Margin="20,0,20,20"
-                    SelectionChanged="Filter_SelectionChanged"
-                    HorizontalAlignment="Left"/>
-
-                <ListView
-                    x:Name="resultsListView"
-                    AutomationProperties.AutomationId="ResultsListView"
-                    AutomationProperties.Name="Search Results"
-                    TabIndex="1"
-                    Grid.Row="1"
-                    Margin="10,0,0,0"
-                    Padding="0,0,0,60"
-                    SelectionMode="None"
-                    IsSwipeEnabled="false"
-                    IsItemClickEnabled="True"
-                    ItemsSource="{Binding Source={StaticResource resultsViewSource}}"
-                    ItemTemplate="{StaticResource StandardSmallIcon70ItemTemplate}">
-
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="Control">
-                            <Setter Property="Height" Value="70"/>
-                            <Setter Property="Margin" Value="0,0,18,8"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
-            </Grid>
         </Grid>
 
         <!-- Back button, page title and subtitles-->
@@ -165,12 +80,6 @@
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
                         </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="filtersItemsControl" Storyboard.TargetProperty="Margin">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="100,-3,90,30"/>
-                        </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="resultsGridView" Storyboard.TargetProperty="Padding">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="90,240,86,56"/>
-                        </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="noResultsTextBlock" Storyboard.TargetProperty="Margin">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="100,50,0,0"/>
                         </ObjectAnimationUsingKeyFrames>
@@ -196,13 +105,6 @@
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="resultText" Storyboard.TargetProperty="Visibility">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
-                        </ObjectAnimationUsingKeyFrames>
-
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="typicalPanel" Storyboard.TargetProperty="Visibility">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
-                        </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="snappedPanel" Storyboard.TargetProperty="Visibility">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
                         </ObjectAnimationUsingKeyFrames>
 
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="noResultsTextBlock" Storyboard.TargetProperty="Margin">

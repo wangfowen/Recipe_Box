@@ -78,14 +78,7 @@ namespace Recipe_Box
 
                 List<MyUserControl1> filteredCards = CardSearch.SearchFor(MainPage.AllData, this.DefaultViewModel["QueryText"].ToString());
 
-                this.DefaultViewModel["Results"] = filteredCards;
-
-
-
-
-
-
-
+                searchResultsCarousel.provideSearchResults(filteredCards);
 
 
 

@@ -19,6 +19,8 @@ namespace Recipe_Box
 {
     public sealed partial class cardViewer : UserControl
     {
+        List<MyUserControl1> filteredCards = null;
+        bool search = false;
         int y1 = -1, y2 = -1;
         int front = 5;
         public cardViewer()
@@ -44,13 +46,22 @@ namespace Recipe_Box
             this.cardGrid.PointerMoved += mainGrid_PointerMoved;
         }
 
+        public void provideSearchResults(List<MyUserControl1> filteredCards)
+        {
+            this.filteredCards = filteredCards;
+            search = true;
+            setup();
+        }
+
+        int cardcount = 8;
         public void setup()
         {
-            for (int i = 0; i < 8 && i < MainPage.AllCards.Count(); i++)
+            for (int i = 0; i < 8 && i < ((search) ? filteredCards.Count() : MainPage.AllCards.Count()); i++)
             {
-                (this.cardGrid.Children[i] as Border).Child = MainPage.AllCards[i];
+                (this.cardGrid.Children[i] as Border).Child = (search) ? filteredCards[i] : MainPage.AllCards[i];
             }
             this.cardGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            cardcount = 8;
         }
 
         void mainGrid_PointerMoved(object sender, PointerRoutedEventArgs e)
@@ -70,7 +81,6 @@ namespace Recipe_Box
                 y1 = (int)p.Y;
             }
         }
-        int cardcount = 8;
         Storyboard storyBoard = new Storyboard();
         void shift()
         {
@@ -79,12 +89,8 @@ namespace Recipe_Box
             front = (front + 1) % 8;
             int index = front;
             Reorder(front);
-            int card = cardcount % MainPage.AllCards.Count();
-            if (card == 0)
-            {
-                UIElement test = (MainPage.AllCards[card].Parent as UIElement);
-            }
-            (this.cardGrid.Children[((front - 1) + 8) % 8] as Border).Child = MainPage.AllCards[card];
+            int card = cardcount % ((search) ? filteredCards.Count() : MainPage.AllCards.Count());
+            (this.cardGrid.Children[((front - 1) + 8) % 8] as Border).Child = (search) ? filteredCards[card] : MainPage.AllCards[card];
             cardcount++;
             for (int i = 0; i <8; i++)
             {
