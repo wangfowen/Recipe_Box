@@ -67,11 +67,15 @@ namespace Recipe_Box
             //throw new NotImplementedException();
             EditCard Card = new EditCard(null);
             this.mainGrid.Children.Add(Card);
-
+            Card.DoneEditing += Card_DoneEditing;
+            this.cardCarousel.Visibility = Visibility.Collapsed;
         }
 
-
-
+        void Card_DoneEditing(object sender, EventArgs e)
+        {
+            this.cardCarousel.Visibility = Visibility.Visible;
+            this.mainGrid.Children.Remove((EditCard)sender);
+        }
     
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

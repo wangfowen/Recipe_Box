@@ -25,7 +25,7 @@ namespace Recipe_Box
         private static TagDatabase tagDatabase;
         private static string DraggedTag = null;
         public static Boolean reversed = false;
-
+        public event EventHandler DoneEditing;
         public EditCard(CardObj CardData)
         {
             tagsList = new ObservableCollection<Tag>();
@@ -48,10 +48,15 @@ namespace Recipe_Box
             control.Height = 400;
             control.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
             control.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
-            
+            control.DoneBuilding += control_DoneBuilding;
             this.LeftPanel.Children.Add(control);
             
             
+        }
+
+        void control_DoneBuilding(object sender, EventArgs e)
+        {
+            DoneEditing(this, new EventArgs());
         }
 
         private void TagView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)

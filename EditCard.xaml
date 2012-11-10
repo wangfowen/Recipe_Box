@@ -12,9 +12,9 @@
             <ColumnDefinition />
             <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="LeftPanel" Background="White" Grid.Column="0" Grid.Row="0">
+        <StackPanel x:Name="LeftPanel" Background="#FFD5C680" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
         </StackPanel>
-        <StackPanel x:Name="SideContainer" Grid.Column="1" Grid.Row="0">
+        <StackPanel x:Name="SideContainer" Grid.Column="1" Grid.Row="0" Background="White">
             <StackPanel.Resources>
                 <Storyboard x:Name="sbReverse" x:Key="sbReverse">
                     <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="TagPanel"  Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
@@ -35,7 +35,7 @@
                 </Storyboard>
             </StackPanel.Resources>
 
-            <StackPanel x:Name="CategoryPanel" Background="#F6F6F6">
+            <StackPanel x:Name="CategoryPanel" Background="#F6F6F6" Margin="0">
                 <TextBlock Text="Select a Category of Ingredients to Add" Foreground="Black" FontSize="20" />
                 <ListView x:Name="CategoryView" Foreground="Black" Padding="5" ItemsSource="{Binding}" ItemClick="FilterTags" IsItemClickEnabled="True">
                 </ListView>

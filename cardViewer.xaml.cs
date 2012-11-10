@@ -40,12 +40,6 @@ namespace Recipe_Box
         {
             this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
             this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
-            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
-            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
-            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
-            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
-            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
-            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
         }
 
         void cardGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -61,23 +55,19 @@ namespace Recipe_Box
             setup();
         }
 
-        int cardcount = 8;
-        public void setup()
-        {
-            for (int i = 0; i < 8 && i < ((search) ? filteredCards.Count() : MainPage.AllCards.Count()); i++)
-            {
-                (this.cardGrid.Children[i] as Border).Child = (search) ? filteredCards[i] : MainPage.AllCards[i];
-            }
-            this.cardGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            cardcount = 8;
-        }
-
         void mainGrid_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
+            if (e.Pointer.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse) {
+                if (e.Pointer.IsInContact == false)
+                {
+                    this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
+                    return;
+                }
+            }
             Point p = e.GetCurrentPoint(this).Position;
             if (y1 == -1)
             {
-                y1 = (int)p.Y; 
+                y1 = (int)p.Y;
             }
             y2 = (int)p.Y;
             if (Math.Abs(y2 - y1) >= 50)
@@ -89,6 +79,18 @@ namespace Recipe_Box
                 y1 = (int)p.Y;
             }
         }
+
+        int cardcount = 8;
+        public void setup()
+        {
+            for (int i = 0; i < 8 && i < ((search) ? filteredCards.Count() : MainPage.AllCards.Count()); i++)
+            {
+                (this.cardGrid.Children[i] as Border).Child = (search) ? filteredCards[i] : MainPage.AllCards[i];
+            }
+            this.cardGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            cardcount = 8;
+        }
+
         Storyboard storyBoard = new Storyboard();
         void shift()
         {

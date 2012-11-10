@@ -19,7 +19,7 @@ namespace Recipe_Box
 {
     public sealed partial class MyUserControl1 : UserControl
     {
-
+        public event EventHandler DoneBuilding;
         public HashSet<String> tags = new HashSet<string>();
         private int width = 0;
         private int height = 0;
@@ -86,6 +86,7 @@ namespace Recipe_Box
         void SaveButt_Click(object sender, RoutedEventArgs e)
         {
             this.SaveDataOfCard();
+            DoneBuilding(this, new EventArgs());
         }
 
         public bool addTag(String tag)
