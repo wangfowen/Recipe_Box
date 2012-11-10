@@ -60,6 +60,9 @@ namespace Recipe_Box
                     tx.Width = width;
                     tx.AllowDrop = true;
                     tx.Drop += DragEventHandler;
+                    tx.DragEnter += Highlight;
+                    tx.DragLeave += Unhighlight;
+                    tx.KeyDown += OnPressEnter;
                     this.reversePanel.Children.Add(tx);
                 }
                 Button SaveButt = new Button();
@@ -74,8 +77,6 @@ namespace Recipe_Box
                 SaveButt.Content = "Save";
                 SaveButt.Click += SaveButt_Click;
                 this.reversePanel.Children.Add(SaveButt);
-
-
             }
             
 
@@ -126,6 +127,8 @@ namespace Recipe_Box
             tx.Drop += DragEventHandler;
             tx.GotFocus += OnEnter1;
             tx.LostFocus += tx_LostFocus;
+            tx.DragEnter += Highlight;
+            tx.DragLeave += Unhighlight;
             tx.KeyDown += OnPressEnter;
             sp.Children.Add(tx);
             this.recipePanel.Children.Add(sp);
@@ -163,12 +166,12 @@ namespace Recipe_Box
 
         void finalizeAndAddRow(StackPanel parent)
         {
+            NumberSelector NS = (NumberSelector)parent.Children[0];
+            UnitSelector US = (UnitSelector)parent.Children[1];
             TextBox tx = (TextBox)parent.Children[2];
 
             if (tx.Text != "Drag and drop ingredient here" && tx.Text != "" && parent.Children.Count == 3 && parent.Orientation == Orientation.Horizontal)
             {
-                NumberSelector NS = (NumberSelector)parent.Children[0];
-                UnitSelector US = (UnitSelector)parent.Children[1];
                 if (NS.getSelectedValue() != "")
                 {
                     tx.Text = NS.getSelectedValue() + " " + US.getSelectedValue() + " " + tx.Text;
@@ -191,10 +194,28 @@ namespace Recipe_Box
             {
                 SenderBox.Text = "";
             }
+
             SenderBox.Text += " " + MainPage.DraggedItem;
             SenderBox.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
-           
-		}    
+            SenderBox.Background = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+
+            StackPanel parent = (StackPanel)SenderBox.Parent;
+            finalizeAndAddRow(parent);
+		}
+
+        private void Highlight(object sender, DragEventArgs e)
+        {
+            TextBox SenderBox = (TextBox)sender;
+
+            SenderBox.Background = new SolidColorBrush(Color.FromArgb(100, 116, 40, 148));
+        }
+
+        private void Unhighlight(object sender, DragEventArgs e)
+        {
+            TextBox SenderBox = (TextBox)sender;
+
+            SenderBox.Background = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+        }    
 
         private void OnEnter(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
