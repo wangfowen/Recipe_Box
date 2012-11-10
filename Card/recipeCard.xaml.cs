@@ -78,9 +78,7 @@ namespace Recipe_Box
                 SaveButt.Click += SaveButt_Click;
                 this.reversePanel.Children.Add(SaveButt);
             }
-            
 
-           
         }
 
         void SaveButt_Click(object sender, RoutedEventArgs e)
@@ -249,11 +247,64 @@ namespace Recipe_Box
 
         public void disableEditing()
         {
-           
+
+            //Assume all textboxes now
+            foreach (UIElement IngredientEntry in this.recipePanel.Children)
+            {
+                try
+                {
+                    TextBox EntryBox = (TextBox)IngredientEntry;
+                    EntryBox.IsEnabled = false;
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+
+            //Assume all textboxes now
+            foreach (UIElement InstructionEntry in this.reversePanel.Children)
+            {
+                try
+                {
+                    TextBox EntryBox = (TextBox)InstructionEntry;
+                    EntryBox.IsEnabled = false;
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
         }
         public void enableEditing()
         {
+            //Assume all textboxes now
+            foreach (UIElement IngredientEntry in this.recipePanel.Children)
+            {
+                try
+                {
+                    TextBox EntryBox = (TextBox)IngredientEntry;
+                    EntryBox.IsEnabled = true;
+                }
+                catch (Exception e)
+                {
 
+                }
+            }
+
+            //Assume all textboxes now
+            foreach (UIElement InstructionEntry in this.reversePanel.Children)
+            {
+                 try
+                 {
+                    TextBox EntryBox = (TextBox)InstructionEntry;
+                    EntryBox.IsEnabled = true;
+                 }
+                catch (Exception e)
+                {
+
+                }
+            }
         }
 
         public async void SaveDataOfCard()
@@ -280,9 +331,9 @@ namespace Recipe_Box
                     {
                         TextBox FinalEntryBox = new TextBox();
                         FinalEntryBox.Text = NS.getSelectedValue() + " " + US.getSelectedValue() + " " + TX.Text;
-                        /************/
-
-                        /************/
+                        /******INSERT TAG******/
+                        DataToBeSaved.TagsList.Add(TX.Text);
+                        /******INSERT TAG******/
                         FinalEntryBox.Width = width;
                         ThisEntry.Children.Clear();
                         StackPanel Card = (StackPanel)ThisEntry.Parent;
@@ -303,24 +354,33 @@ namespace Recipe_Box
                 
             }
 
+
             //All entries should be textboxes now 
-            foreach (UIElement IngredientEntry in this.recipePanel.Children)
+            disableEditing();
+
+            for (int i = 0; i < this.recipePanel.Children.Count; i++)
             {
-                TextBox ThisEntry = (TextBox)IngredientEntry;
+                TextBox ThisEntry = (TextBox)this.recipePanel.Children[i];
                 DataToBeSaved.IngredientList.Add(ThisEntry.Text.ToString());
-                            
+                if (i == 0) //first entry is title add to tags
+                    DataToBeSaved.TagsList.Add(ThisEntry.Text.ToString());
             }
 
-            //All entries should be textboxes now 
-            foreach (UIElement InstructionEntry in this.reversePanel.Children)
+
+
+            for (int i = 0; i < this.reversePanel.Children.Count; i++)
             {
-                //if element of type textbox
-                if (InstructionEntry.GetType() == Tmp_TX.GetType())
+                TextBox ThisEntry;
+                if (this.reversePanel.Children[i].GetType() == Tmp_TX.GetType())
                 {
-                    TextBox ThisEntry = (TextBox)InstructionEntry;
+                    ThisEntry = (TextBox)this.reversePanel.Children[i];
                     DataToBeSaved.InstructionList.Add(ThisEntry.Text.ToString());
+
+                    if (i == 0) //first entry is title add to tags
+                        DataToBeSaved.TagsList.Add(ThisEntry.Text.ToString());
                 }
 
+             
             }
 
 
