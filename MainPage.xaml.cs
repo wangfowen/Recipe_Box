@@ -11,20 +11,32 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Recipe_Box
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class MainPage : Page
     {
-        string DraggedTag = null;
+        public ObservableCollection<Tag> tagsList = new ObservableCollection<Tag>();
+        public string DraggedTag = null;
+        public TagDatabase tagDatabase = new TagDatabase();
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            List<Tag> tags = tagDatabase.FindByCategory("baking");
+
+            foreach (Tag tag in tags)
+            {
+                tagsList.Add(tag);
+            }
+
+            this.TagGridView.DataContext = tagsList;
         }
 
         /// <summary>
@@ -46,7 +58,7 @@ namespace Recipe_Box
 
         private void TagGridView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
-            DraggedTag = (string)e.Items[0];
+            DraggedTag = e.Items[0].ToString();
             this.TitleTextBox.Text = "dragging";
         }
     }
