@@ -41,6 +41,18 @@ namespace Recipe_Box
             return (MyUserControl1)(this.cardGrid.Children[front] as Border).Child;
         }
 
+        public MyUserControl1 releaseFrontCard()
+        {
+            MyUserControl1 card = (MyUserControl1)(this.cardGrid.Children[front] as Border).Child;
+            (this.cardGrid.Children[front] as Border).Child = null;
+            return card;
+        }
+
+        public void returnFrontCard(MyUserControl1 card)
+        {
+            (this.cardGrid.Children[front] as Border).Child = card;
+        }
+
         void cardGrid_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
             this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
@@ -90,7 +102,7 @@ namespace Recipe_Box
         {
             for (int i = 0; i < 8 && i < ((search) ? filteredCards.Count() : MainPage.AllCards.Count()); i++)
             {
-                (this.cardGrid.Children[i] as Border).Child = (search) ? filteredCards[i] : MainPage.AllCards[i];
+                (this.cardGrid.Children[7-i] as Border).Child = (search) ? filteredCards[i] : MainPage.AllCards[i];
             }
             this.cardGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
             cardcount = 8;

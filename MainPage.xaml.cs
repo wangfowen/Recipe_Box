@@ -35,6 +35,23 @@ namespace Recipe_Box
             this.Loaded += MainPage_Loaded;
 
             this.AddCard.Click += AddCard_Click;
+            this.ViewCard.Click += ViewCard_Click;
+        }
+
+        void ViewCard_Click(object sender, RoutedEventArgs e)
+        {
+            MyUserControl1 card = this.cardCarousel.releaseFrontCard();
+            card.PointerPressed += card_PointerReleased;
+            this.cardCarousel.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            this.mainGrid.Children.Add(card);
+        }
+
+        void card_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            (sender as MyUserControl1).PointerPressed -= card_PointerReleased;
+            this.mainGrid.Children.Remove((sender as MyUserControl1));
+            this.cardCarousel.returnFrontCard((sender as MyUserControl1));
+            this.cardCarousel.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
 
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)
