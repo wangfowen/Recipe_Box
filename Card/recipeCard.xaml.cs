@@ -23,16 +23,18 @@ namespace Recipe_Box
         public HashSet<String> tags = new HashSet<string>();
         private int width = 0;
         private int height = 0;
-        public MyUserControl1(int width, int height)
+        public MyUserControl1(int width, int height, CardObj CardData)
         {
             this.InitializeComponent();
             this.width = width;
             this.height = height;
 
-            //if (1 == 1)
-                //this.LoadDataOfCard();
-            //else
-            //{
+            if (CardData != null)
+            {
+                this.LoadDataOfCard(CardData);
+            }
+            else
+            {
                 addRow();
                 for (int i = 0; i < 10; ++i)
                 {
@@ -73,8 +75,8 @@ namespace Recipe_Box
                 SaveButt.Click += SaveButt_Click;
                 this.reversePanel.Children.Add(SaveButt);
 
-            //}
 
+            }
             
 
            
@@ -287,20 +289,20 @@ namespace Recipe_Box
         }
 
 
-        public async void LoadDataOfCard()
+        public void LoadDataOfCard(CardObj CardForThisPage)
         {
             //First Read 
-            SaveAndLoad DataSaverLoader = new SaveAndLoad();
-            LocalAppData AllCardsCollection = await DataSaverLoader.LoadData();
+            //SaveAndLoad DataSaverLoader = new SaveAndLoad();
+            //LocalAppData AllCardsCollection = await DataSaverLoader.LoadData();
 
-            CardObj CardData = AllCardsCollection.AllCardData[AllCardsCollection.CardCount - 1];
+            //CardObj CardData = AllCardsCollection.AllCardData[AllCardsCollection.CardCount - 1];
 
-            for (int i = 0; i<CardData.IngredientList.Count; i++)
+            for (int i = 0; i < CardForThisPage.IngredientList.Count; i++)
             {
                 if (i == 0)
                 {
                     TextBox tx = (TextBox) this.recipePanel.Children[0];
-                    tx.Text = CardData.IngredientList[i].ToString();
+                    tx.Text = CardForThisPage.IngredientList[i].ToString();
                 }
                 else
                 {
@@ -311,14 +313,14 @@ namespace Recipe_Box
                     tx.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                     tx.BorderBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                     tx.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch;
-                    tx.Text = CardData.IngredientList[i].ToString();
+                    tx.Text = CardForThisPage.IngredientList[i].ToString();
                     this.recipePanel.Children.Add(tx);
                 }
                
             }
-          
 
-            foreach (string Instruction in CardData.InstructionList)
+
+            foreach (string Instruction in CardForThisPage.InstructionList)
             {
                 TextBox tx = new TextBox();
                 tx.BorderThickness = new Thickness(0);

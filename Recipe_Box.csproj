@@ -108,7 +108,6 @@
     </Compile>
     <Compile Include="Card\CardObj.cs" />
     <Compile Include="Card\LocalAppData.cs" />
-    <Compile Include="Card\MainPage.xaml.cs" />
     <Compile Include="Card\NumberSelector.xaml.cs" />
     <Compile Include="Card\recipeCard.xaml.cs" />
     <Compile Include="Card\SaveAndLoad.cs" />
@@ -122,13 +121,14 @@
     <Compile Include="EditCard.xaml.cs">
       <DependentUpon>EditCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SearchResultsPage1.xaml.cs">
       <DependentUpon>SearchResultsPage1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tag.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,10 +153,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Card\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Card\NumberSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -173,11 +169,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="EditCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

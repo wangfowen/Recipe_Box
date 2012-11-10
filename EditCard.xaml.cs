@@ -25,7 +25,7 @@ namespace Recipe_Box
         private static string DraggedTag = null;
         public static Boolean reversed = false;
 
-        public EditCard()
+        public EditCard(CardObj CardData)
         {
             tagsList = new ObservableCollection<Tag>();
             categoriesList = new ObservableCollection<string>();
@@ -42,7 +42,7 @@ namespace Recipe_Box
 
 
             /*****NEW STUFF BINDING CARDS AND DRAG AND DROP TOGETHER****/
-            MyUserControl1 control = new MyUserControl1(600, 400);
+            MyUserControl1 control = new MyUserControl1(600, 400, CardData);
             control.Width = 600;
             control.Height = 400;
             control.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
