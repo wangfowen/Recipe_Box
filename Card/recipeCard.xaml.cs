@@ -83,6 +83,8 @@ namespace Recipe_Box
 
         }
 
+
+
         void SaveButt_Click(object sender, RoutedEventArgs e)
         {
             this.SaveDataOfCard();

@@ -36,6 +36,11 @@ namespace Recipe_Box
             }
         }
 
+        public MyUserControl1 getFrontCard()
+        {
+            return (MyUserControl1)(this.cardGrid.Children[front] as Border).Child;
+        }
+
         void cardGrid_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
             this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
