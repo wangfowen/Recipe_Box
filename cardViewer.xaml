@@ -1,0 +1,102 @@
+﻿<UserControl
+    x:Class="Recipe_Box.cardViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:cardDisplay2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="700"
+    d:DesignWidth="800">
+    
+    <Grid x:Name="cardGrid">
+    	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Margin="54,0,0,54" Background="#FF727272">
+    		<Border.Projection>
+    			<PlaneProjection GlobalOffsetY="-350" GlobalOffsetX="245" GlobalOffsetZ="-245"/>
+    		</Border.Projection>
+    		<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
+    			<Run Text="ONE"/>
+    			<LineBreak/>
+    			<Run/>
+    		</TextBlock>
+    	</Border>
+    	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Margin="54,0,0,54" Background="#FF727272">
+    		<Border.Projection>
+    			<PlaneProjection GlobalOffsetY="-300" GlobalOffsetX="210" GlobalOffsetZ="-210"/>
+    		</Border.Projection>
+    		<TextBlock TextWrapping="Wrap" Text="TWO" Foreground="Black" FontSize="48"/>
+    	</Border>
+    	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Margin="54,0,0,54" Background="#FF727272">
+    		<Border.Projection>
+    			<PlaneProjection GlobalOffsetY="-250" GlobalOffsetX="175" GlobalOffsetZ="-175"/>
+    		</Border.Projection>
+    		<TextBlock TextWrapping="Wrap" Text="THREE" Foreground="Black" FontSize="48"/>
+    	</Border>
+        
+    	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Margin="54,0,0,54" Background="#FF727272">
+    		<Border.Projection>
+    			<PlaneProjection GlobalOffsetY="-200" GlobalOffsetX="140" GlobalOffsetZ="-140"/>
+    		</Border.Projection>
+    		<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
+    			<Run Text="FOUR"/>
+    			<LineBreak/>
+    			<Run/>
+    		</TextBlock>
+    	</Border>
+        
+    	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Margin="54,0,0,54" Background="#FF878787">
+    		<Border.Projection>
+    			<PlaneProjection GlobalOffsetY="-150" GlobalOffsetX="105" GlobalOffsetZ="-105"/>
+    		</Border.Projection>
+    		<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
+    			<Run Text="FIVE"/>
+    			<LineBreak/>
+    			<Run Text="ASDLKJASFLKJASD"/>
+    			<LineBreak/>
+    			<Run/>
+    		</TextBlock>
+    	</Border>
+        
+    	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Margin="54,0,0,54" Background="#FFB2B2B2">
+    		<Border.Projection>
+    			<PlaneProjection GlobalOffsetY="-100" GlobalOffsetX="70" GlobalOffsetZ="-70"/>
+    		</Border.Projection>
+    		<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
+    			<Run Text="SIX"/>
+    			<LineBreak/>
+    			<Run/>
+    			<LineBreak/>
+    			<Run Text="asdfasd"/>
+    			<LineBreak/>
+    			<Run/>
+    		</TextBlock>
+    	</Border>
+        
+    	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Margin="54,0,0,54" Background="#FFC9C9C9">
+    		<Border.Projection>
+    			<PlaneProjection GlobalOffsetX="35" GlobalOffsetY="-50" GlobalOffsetZ="-35"/>
+    		</Border.Projection>
+    		<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
+    			<Run Text="SEVEN"/>
+    			<LineBreak/>
+    			<Run/>
+    		</TextBlock>
+    	</Border>
+        
+    	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Bottom" Width="500" Margin="54,56,0,54" Background="White">
+    		<Border.Projection>
+    			<PlaneProjection GlobalOffsetY="1" GlobalOffsetX="1" GlobalOffsetZ="1"/>
+    		</Border.Projection>
+			<TextBlock TextWrapping="Wrap" Foreground="Black" FontSize="48">
+    			<Run Text="EIGHT"/>
+    			<LineBreak/>
+    			<Run/>
+    			<LineBreak/>
+    			<Run Text="CONTENT"/>
+    			<LineBreak/>
+    			<Run/>
+    		</TextBlock>
+    	</Border>
+        
+    </Grid>
+</UserControl>
