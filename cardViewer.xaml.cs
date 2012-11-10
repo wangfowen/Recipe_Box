@@ -39,6 +39,13 @@ namespace Recipe_Box
         void cardGrid_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
             this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
+            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
+            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
+            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
+            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
+            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
+            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
+            this.cardGrid.PointerMoved -= mainGrid_PointerMoved;
         }
 
         void cardGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -48,6 +55,7 @@ namespace Recipe_Box
 
         public void provideSearchResults(List<MyUserControl1> filteredCards)
         {
+            
             this.filteredCards = filteredCards;
             search = true;
             setup();

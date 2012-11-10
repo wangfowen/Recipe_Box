@@ -8,7 +8,7 @@
     mc:Ignorable="d" Background="#FFD5C680">
     
 	<Page.BottomAppBar> 
-        <AppBar x:Name="BottomAppBar1" Padding="10,0,10,0" AutomationProperties.Name="Bottom App Bar"> 
+        <AppBar x:Name="BottomAppBar1" Padding="10,0,10,0" AutomationProperties.Name="Bottom App Bar" IsOpen="True" IsSticky="True"> 
             <Grid> 
                 <Grid.ColumnDefinitions> 
                     <ColumnDefinition Width="50*"/> 
@@ -25,7 +25,7 @@
     </Page.BottomAppBar> 
 
     <Grid x:Name="mainGrid" Background="#FFD5C680">
-    	<local:cardViewer x:Name="cardCarousel" HorizontalAlignment="Center" VerticalAlignment="Center" Height="700" Width="800"/>
+    	<local:cardViewer x:Name="cardCarousel" HorizontalAlignment="Center" VerticalAlignment="Top" Height="700" Width="800"/>
         
     </Grid>
 </Page>

@@ -32,7 +32,7 @@
 
         <Grid x:Name="resultsPanel" Grid.Row="1">
         	<Canvas Margin="283,0" HorizontalAlignment="Center" Width="800" UseLayoutRounding="True">
-        		<local:cardViewer x:Name="searchResultsCarousel" HorizontalAlignment="Center" Height="700" VerticalAlignment="Center" Width="800" Canvas.Top="-48"/>
+        		<local:cardViewer x:Name="searchResultsCarousel" HorizontalAlignment="Center" Height="700" VerticalAlignment="Center" Width="800" Canvas.Top="-74"/>
         	</Canvas>
         <!--
             The body of the page in most view states uses an items controls to create multiple radio buttons
